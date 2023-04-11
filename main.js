@@ -88,6 +88,7 @@ function addProductToCart(title,price,productImg){
     }
     
     var cartBoxContent=`
+    <i class='bx bx-heart'></i>
 <img src="${productImg}" alt="" class="cart-img">
 <div class="detail-box">
     <div class="cart-product-title">${title}</div>
@@ -101,6 +102,7 @@ cartShopBox.innerHTML=cartBoxContent
 cartItems.append(cartShopBox)
 cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click',removeCartItem)
 cartShopBox.getElementsByClassName('cart-quantity')[0].addEventListener('change',quantityChanged)
+cartShopBox.getElementsByClassName('bx-heart')[0].addEventListener('click',likeItem)
 
 
 
@@ -144,7 +146,18 @@ function updateTotal(){
         total=Math.round(total*100)/100
 
         document.getElementsByClassName('total-price')[0].innerText='$'+total
+}
 
-    
-
+// heart button
+// let hearts = document.getElementsByClassName("bx-heart")
+// console.log(hearts)
+// for(let heart of hearts) {
+//     heart.addEventListener("click", function(){
+//         heart.classList.toggle("heart")
+//         console.log("toggle heart")
+//     })
+// }
+function likeItem(event){
+    var buttonClicked=event.target
+    buttonClicked.classList.toggle("heart")
 }
